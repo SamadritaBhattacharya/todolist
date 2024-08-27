@@ -18,7 +18,6 @@ const registerUser = asyncHandler(
         if (userExists) {
             res.status(400);
             throw new Error('User already exists');
-
         }
 
         const hashedPassword = await bcrypt.hash( password, 8);
