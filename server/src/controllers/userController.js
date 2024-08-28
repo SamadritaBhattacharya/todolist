@@ -67,7 +67,7 @@ const loginUser = asyncHandler(
     }
 );
 
-const getUser = async(req, res) => {
+const getUser = asyncHandler(async(req, res) => {
     try {
         const user = await User.findById(req.params.id);
         res.status(200).json(user);
@@ -78,7 +78,7 @@ const getUser = async(req, res) => {
         res.status(500).json({message: error.message });
         
     }
-};
+});
 
 const logoutUser = asyncHandler(
     async(req, res) => {
