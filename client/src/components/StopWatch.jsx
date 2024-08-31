@@ -1,3 +1,4 @@
+import { Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
 const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
@@ -50,14 +51,17 @@ const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
   };
 
   return (
-    <div className='text-black'>
-      <p>Elapsed Time: {formatTime(time)}</p>
-      <button onClick={handleStartPause} className="py-1 px-2 bg-green-500 text-white rounded">
-        {running ? 'Pause' : 'Start'}
+    <div className='text-black  w-[75%] mx-auto flex justify-between'>
+      {/* <p className=' flex gap-2'><Clock /> {formatTime(time)}</p> */}
+      <div className=' flex'>
+      <button onClick={handleStartPause} className=" bg-green-700 p-2 opacity-80 rounded-full text-white ">
+        {running ? <Pause className=' h-5 w-5' /> : <Play className=' h-5 w-5' />}
       </button>
-      <button onClick={handleReset} className="ml-2 py-1 px-2 bg-red-500 text-white rounded">
-        Reset
+      <button onClick={handleReset} className="ml-2 px-[8px] py-[1px] text-red-500 rounded">
+        <RotateCcw className=' h-8 w-8' />
       </button>
+      </div>
+      <p className=' flex gap-2 text-lg items-center'><Clock className=' h-6 w-6 text-orange-700' /> {formatTime(time)}</p>
     </div>
   );
 };
