@@ -19,8 +19,7 @@ export default function EditTaskFormModal({ onClose, onSave, task }) {
     
     if (task?._id) {
       onSave(task._id, { title, description }); 
-      // onClose();   
-      
+   
     }
     
   };

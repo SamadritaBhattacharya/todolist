@@ -7,7 +7,7 @@ import EditTaskFormModal from "./EditTaskForm";
 
 
 export default function Dashboard() {
-  const navigate = useNavigate(); // Use useNavigate instead of Next.js useRouter
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [showTaskFormModal, setShowTaskFormModal] = useState(false);
   const [showEditTaskFormModal, setShowEditTaskFormModal] = useState(false);
@@ -59,12 +59,7 @@ export default function Dashboard() {
   }, [navigate, userId]);
 
   const addTask = async (task) => {
-    // if (tasks.length >= 5 && !user.subscription) {
-    //   setTaskLimitReached(true);
-    //   setShowTaskFormModal(false);
-    //   return;
-    // }
-
+    
     try {
       const response = await axios.post("http://localhost:8000/api/tasks", task, {
         withCredentials: true,
@@ -78,36 +73,47 @@ export default function Dashboard() {
     }
   };
 
-  // const updateTask = async (id, updatedTask) => {
-  //   try {
-  //     const response = await axios.put(`http://localhost:8000/api/tasks/${id}`, updatedTask, {
-  //       withCredentials: true,
-  //     });
-      
-      
-  //     setTasks(tasks.map((task) => (task._id === id ? response.data : task)));
-      
-  //     setShowEditTaskFormModal(false);
-  //   } catch (error) {
-  //     if (error.response && error.response.status === 401) {
-  //       navigate("/login");
-  //     }
-  //   }
-  // };
+ 
 
   const updateTask = async (id, updatedTask) => {
     try {
-      const response = await axios.put(`http://localhost:8000/api/tasks/${id}`, updatedTask, {
-        withCredentials: true,
-      });
-      setTasks(tasks.map((task) => (task._id === id ? response.data : task)));
-      setShowEditTaskFormModal(false);
+     
+      const response = await axios.put(`http://localhost:8000/api/tasks/${id}`, updatedTask, {withCredentials: true});
+      console.log("Received response:", response);
+  
+      
+      if (response && response.status === 200) {
+        console.log('State updated');
+  
+        setTasks((prevTasks) =>
+          prevTasks.map((task) => (task._id === id ? response.data : task))
+        );
+      } else {
+        
+        console.error("Unexpected response status:", response.status, response.data);
+      }
+  
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        navigate("/login");
+      
+      console.error("Error during task update:", error);
+  
+      if (error.response) {
+       
+        console.error("Server responded with an error:", error.response.status, error.response.data);
+  
+        if (error.response.status === 401) {
+          navigate("/login");
+        }
+      } else if (error.request) {
+       
+        console.error("No response received from server:", error.request);
+      } else {
+       
+        console.error("Error in setting up the request:", error.message);
       }
     }
   };
+  
 
 
   const deleteTask = async (id) => {
@@ -152,15 +158,49 @@ export default function Dashboard() {
     }
   };
 
+  // const handleUpdateTask = async (id, update) => {
+  //   console.log('Entered');
+    
+  //   const updatedTask = tasks.find((task) => task._id === id);
+
+  //   console.log("State not updated");
+    
+  //   if (updatedTask) {
+
+  //     const newTaskData = { ...updatedTask, ...update};
+  //     console.log("updated");
+  //     await updateTask(id, newTaskData);
+  //     setShowEditTaskFormModal(false);
+
+  //     // console.log("updated");
+      
+  //     // await updateTask(id, { ...updatedTask, ...update });
+
+  //     // setShowEditTaskFormModal(false);
+  //   }
+  // };
+
   const handleUpdateTask = async (id, update) => {
+    console.log('Entered');
+  
     const updatedTask = tasks.find((task) => task._id === id);
+  
     if (updatedTask) {
-      await updateTask(id, { ...updatedTask, ...update });
-      setShowEditTaskFormModal(false);
+      console.log("State not updated, task updated");
+  
+      try {
+        // Pass the updated task to the updateTask function
+        await updateTask(id, { ...updatedTask, ...update });
+        console.log('Task update called successfully.');
+        
+        // Close the modal after successful update
+        setShowEditTaskFormModal(false);
+        
+      } catch (error) {
+        console.error('Error updating task:', error);
+      }
     }
   };
-
-  
 
 
 
@@ -230,8 +270,10 @@ export default function Dashboard() {
       )}
       {showEditTaskFormModal && selectedTask && (
         <EditTaskFormModal
-          onClose={() => setShowEditTaskFormModal(false)}
-          onSave={(id, updatedTask) => updateTask(id, updatedTask)}
+
+          onSave={handleUpdateTask}
+
+          onClose={() => setShowEditTaskFormModal(false)}          
           task={selectedTask}
         />
       )}
