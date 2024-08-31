@@ -51,7 +51,7 @@ const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
   };
 
   return (
-    <div className='text-black  w-[75%] mx-auto flex justify-between'>
+    <div className='text-black  w-[92%]  mx-auto flex text-wrap '>
       {/* <p className=' flex gap-2'><Clock /> {formatTime(time)}</p> */}
       <div className=' flex'>
       <button onClick={handleStartPause} className=" bg-green-700 p-2 opacity-80 rounded-full text-white ">
@@ -61,7 +61,8 @@ const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
         <RotateCcw className=' h-8 w-8' />
       </button>
       </div>
-      <p className=' flex gap-2 text-lg items-center'><Clock className=' h-6 w-6 text-orange-700' /> {formatTime(time)}</p>
+      <div className=' px-2'>
+      <p className=' flex gap-1 text-lg items-center text-wrap mx-auto'><Clock className=' h-6 w-6 text-orange-700' /> {formatTime(time)}</p></div>
     </div>
   );
 };

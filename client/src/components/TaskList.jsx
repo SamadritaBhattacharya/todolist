@@ -9,7 +9,7 @@ export default function TaskList({ tasks, onEdit, onDelete, onComplete, onUpdate
     <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 py-2 max-w-full mx-auto ">
       {tasks.map((task) => (
         <div key={task._id} className="shadow-[10px_10px_20px_rgba(8,_112,_184,_0.4)] 
-         w-full  h-full p-6 rounded-lg transform bg-slate-50 transition hover:scale-105 hover:bg-white  ">
+         w-full  h-full p-6 rounded-xl transform bg-slate-50 transition hover:scale-105 hover:bg-white  ">
           <div className=' flex flex-row-reverse justify-between space-y-4'>
             <div className=' flex gap-4 text-neutral-600 p-0  relative bottom-4'>
               
@@ -22,7 +22,7 @@ export default function TaskList({ tasks, onEdit, onDelete, onComplete, onUpdate
             </button>
             </div>
             
-          <h2 className="lg:text-4xl text-xl md:text-2xl py-2 font-bold text-zinc-800">{task.title}</h2>
+          <h2 className="lg:text-4xl text-xl md:text-2xl py-2 font-bold text-slate-700">{task.title}</h2>
           
           </div>
 

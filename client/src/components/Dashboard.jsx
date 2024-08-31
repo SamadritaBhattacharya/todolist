@@ -218,8 +218,8 @@ export default function Dashboard() {
 
 
       <aside
-            className={`bg-cyan-950 opacity-80 text-white p-4  transition-all duration-300 flex items-center justify-center border-r-8 border-slate-100 ${
-              hovered ? "w-64" : "w-20"
+            className={` hidden lg:flex bg-cyan-950 opacity-80 text-white p-4  transition-all duration-300  items-center justify-center border-r-8 border-slate-100 ${
+              hovered ? "w-62" : "w-20"
             }`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -287,9 +287,12 @@ export default function Dashboard() {
 
               </div>
 
+
               
 
-              <div className="">
+              
+
+              <div className="h-[20%]  space-y-12 w-full flex flex-col">
                
                   <button className=" flex items-center space-x-4">
                     <Settings size={30}/>
@@ -302,9 +305,9 @@ export default function Dashboard() {
                   localStorage.removeItem("token");
                   navigate("/login");
                 }}
-                className="mt-4 md:mt-8 w-full py-2  bg-red-600 rounded hover:bg-red-700 flex items-center justify-center"
+                className="flex items-center space-x-4"
               >
-                <LogOutIcon className="text-white" size={24} />
+                <LogOutIcon  size={30} />
                 {hovered && <span className="ml-2">Sign Out</span>}
               </button>
               </div>
@@ -369,6 +372,11 @@ export default function Dashboard() {
       )}
      
     </div>
+
+ 
+
+
+
   </div>
   );
 }
