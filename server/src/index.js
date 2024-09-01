@@ -25,5 +25,5 @@ app.use(cookieParser());
 app.use('/api/user',userRoutes)
 app.use('/api/',verifyToken,taskRoutes)
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000 || "https://todolist-14km.onrender.com";
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
