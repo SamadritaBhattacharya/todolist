@@ -8,7 +8,7 @@ export default function Home() {
     <div
       className="flex flex-col items-center justify-center w-full min-h-screen bg-cover bg-center "
       style={{
-        backgroundImage: `url(${bgimg2})`,
+        backgroundImage: `url(${bgimg1})`,
       }}
     >
       <div className='w-[90%] h-full   md:w-[70%] lg:w-[60%] mx-auto opacity-100 '>

@@ -15,8 +15,8 @@ export default function TaskForm({ onClose, onSave }) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Add New Task</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
