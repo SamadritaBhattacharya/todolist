@@ -30,7 +30,7 @@ export default function Dashboard() {
     
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/tasks", {
+        const response = await axios.get("https://todolist-14km.onrender.com/api/tasks", {
           withCredentials: true,
         });
         setTasks(response.data);
@@ -45,7 +45,7 @@ export default function Dashboard() {
       console.log(userId);
       
       try {
-        const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
+        const response = await axios.get(`https://todolist-14km.onrender.com/api/user/${userId}`, {
           withCredentials: true,
         });
         const data = response.data;
@@ -65,7 +65,7 @@ export default function Dashboard() {
   const addTask = async (task) => {
     
     try {
-      const response = await axios.post("http://localhost:8000/api/tasks", task, {
+      const response = await axios.post("https://todolist-14km.onrender.com/api/tasks", task, {
         withCredentials: true,
       });
       setTasks([...tasks, response.data]);
@@ -82,7 +82,7 @@ export default function Dashboard() {
   const updateTask = async (id, updatedTask) => {
     try {
      
-      const response = await axios.put(`http://localhost:8000/api/tasks/${id}`, updatedTask, {withCredentials: true});
+      const response = await axios.put(`https://todolist-14km.onrender.com/api/tasks/${id}`, updatedTask, {withCredentials: true});
       console.log("Received response:", response);
   
       
@@ -122,7 +122,7 @@ export default function Dashboard() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/tasks/${id}`, {
+      await axios.delete(`https://todolist-14km.onrender.com/api/tasks/${id}`, {
         withCredentials: true,
       });
       setTasks(tasks.filter((task) => task._id !== id));
@@ -149,7 +149,7 @@ export default function Dashboard() {
 
   const handleEditTask = async (taskId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tasks/${taskId}`, {
+      const response = await axios.get(`https://todolist-14km.onrender.com/api/tasks/${taskId}`, {
         withCredentials: true,
       });
       const task = response.data;

@@ -13,7 +13,7 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/user/signup', { name, email, password });
+      await axios.post('https://todolist-14km.onrender.com/api/user/signup', { name, email, password });
       alert('User registered successfully');
       navigate('/login'); 
     } catch (error) {
