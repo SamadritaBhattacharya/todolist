@@ -609,7 +609,7 @@ export default function Dashboard() {
 
         <main className="flex-1 p-4 md:p-8 grainy-dark">
           <div className="flex justify-between items-center mb-4 md:mb-6">
-            <h1 className="text-2xl md:text-3xl font-bold text-black">All Tasks</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-semibold text-cyan-950">All Tasks</h1>
             <button
               onClick={() => setShowTaskFormModal(true)}
               className="hidden py-2 px-4 bg-neutral-500 font-medium text-white rounded-xl hover:bg-slate-700 lg:flex gap-2"
@@ -619,7 +619,7 @@ export default function Dashboard() {
             <div className="lg:hidden flex gap-2 relative">
               <button
                 onClick={() => setShowTaskFormModal(true)}
-                className="p-[2px] ring-neutral-500 ring-2 font-medium text-white rounded-full hover:bg-slate-700 flex gap-2"
+                className="p-[2px] ring-neutral-500 ring-2 font-medium text-white rounded-full hover:bg-slate-300 flex gap-2"
               >
                 <Plus className="text-slate-700" />
               </button>
