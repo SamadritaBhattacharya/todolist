@@ -1,5 +1,5 @@
 import React from 'react';
-import Stopwatch from './Stopwatch';
+import StopWatch from './StopWatch';
 import { SquarePen, Trash, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -76,7 +76,7 @@ export default function TaskList({ tasks, onEdit, onDelete, onComplete, onUpdate
           <p className="text-neutral-700 text-wrap text-base w-full h-[25%] ">{task.description}</p>
           
           
-          <Stopwatch
+          <StopWatch
             startTime={task.startTime}
             elapsedTime={task.elapsedTime}
             onUpdate={(update) => onUpdate(task._id, update)}

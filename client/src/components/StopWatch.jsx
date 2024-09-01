@@ -1,7 +1,7 @@
 import { Clock, Pause, Play, RotateCcw } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
-const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
+const StopWatch = ({ startTime, elapsedTime, onUpdate }) => {
   const [time, setTime] = useState(elapsedTime || 0);
   const [running, setRunning] = useState(false);
   const timerRef = useRef(null);
@@ -67,4 +67,4 @@ const Stopwatch = ({ startTime, elapsedTime, onUpdate }) => {
   );
 };
 
-export default Stopwatch;
+export default StopWatch;
