@@ -19,11 +19,11 @@ export default function Home() {
       <div className="shadow-[0_20px_50px_rgba(8,_112,_184,_0.6)]
       
       rounded-xl  border-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1 ">
-        <div className="bg-neutral-400 bg-opacity-75 py-8 sm:py-12 px-4 sm:px-6 rounded-xl shadow-xl text-center">
+        <div className="bg-neutral-600 bg-opacity-75 py-8 sm:py-12 px-4 sm:px-6 rounded-xl shadow-xl text-center">
           <h1 className="text-3xl lg:text-6xl font-normal text-cyan-50 mb-4">
             Welcome to Todo Master
           </h1>
-          <p className="text-cyan-950  text-sm lg:text-xl mb-6">
+          <p className="text-cyan-300  text-sm lg:text-xl mb-6">
             Manage your tasks efficiently and effectively.
           </p>
           <div className="space-x-2 sm:space-x-4">

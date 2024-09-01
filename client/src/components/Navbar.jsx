@@ -8,7 +8,7 @@ const fetchUser = async () => {
     console.log(userId);
     
     try {
-      const response = await axios.get(`https://todolist-14km.onrender.com/api/user/${userId}`, {
+      const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
         withCredentials: true,
       });
       const data = response.data;
@@ -31,7 +31,7 @@ const Navbar = () => {
     
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("https://todolist-14km.onrender.com/api/tasks", {
+        const response = await axios.get("http://localhost:8000/api/tasks", {
           withCredentials: true,
         });
         setTasks(response.data);
@@ -46,7 +46,7 @@ const Navbar = () => {
       console.log(userId);
       
       try {
-        const response = await axios.get(`https://todolist-14km.onrender.com/api/user/${userId}`, {
+        const response = await axios.get(`http://localhost:8000/api/user/${userId}`, {
           withCredentials: true,
         });
         const data = response.data;
